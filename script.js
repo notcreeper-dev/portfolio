@@ -123,7 +123,7 @@
 
     form.reset();
 
-    status.textContent = '✓ Message sent successfully! I’ll get back to you soon.';
+    status.textContent = '✓ Message sent successfully! We’ll get back to you soon.';
     status.hidden = false;
     status.focus();
 
