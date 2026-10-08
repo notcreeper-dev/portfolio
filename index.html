@@ -210,8 +210,26 @@
               </a>
             </li>
           </ul>
+            <div class="quick-contact" aria-labelledby="quick-contact-title">
+              <h3 id="quick-contact-title">Contact Options</h3>
+              <p class="quick-contact-intro">You can also contact me directly through your preferred email service.</p>
+              <div class="quick-contact-options">
+                <a class="quick-contact-link gmail-link" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=notcreeper.main%40gmail.com&amp;su=Website%20Inquiry&amp;body=Hello%20NCGS%2C%0A%0AI%20found%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20website%20project.%0A%0AName%3A%0ABusiness%20%2F%20Project%3A%0AWhat%20I%20need%3A%0A%0AMessage%3A%0A%0AThank%20you." target="_blank" rel="noopener noreferrer" aria-label="Continue with Gmail, opens Gmail compose in a new tab">
+                  <img class="mail-service-icon gmail-icon" src="assets/gmail-logo.svg" alt="" aria-hidden="true">
+                  <span class="quick-contact-copy"><strong>Continue with Gmail</strong><small>Open Gmail and compose a message</small></span>
+                  <span class="quick-contact-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="quick-contact-link outlook-link" href="https://outlook.live.com/mail/0/deeplink/compose?to=notcreeper.main%40gmail.com&amp;subject=Website%20Inquiry&amp;body=Hello%20NCGS%2C%0A%0AI%20found%20your%20portfolio%20and%20would%20like%20to%20discuss%20a%20website%20project.%0A%0AName%3A%0ABusiness%20%2F%20Project%3A%0AWhat%20I%20need%3A%0A%0AMessage%3A%0A%0AThank%20you." target="_blank" rel="noopener noreferrer" aria-label="Continue with Outlook, opens Outlook compose in a new tab">
+                  <img class="mail-service-icon outlook-icon" src="assets/outlook-logo.svg" alt="" aria-hidden="true">
+                  <span class="quick-contact-copy"><strong>Continue with Outlook</strong><small>Open Outlook and compose a message</small></span>
+                  <span class="quick-contact-arrow" aria-hidden="true">↗</span>
+                </a>
+              </div>
+              <div class="quick-contact-divider" role="separator" aria-orientation="horizontal"></div>
+              <p class="quick-contact-note">For project inquiries, the form is recommended.</p>
+            </div>
         </div>
-        <form id="contact-form" class="form" novalidate>
+        <form action="https://formspree.io/f/mbgdoyjb" method="POST" id="contact-form" class="form" novalidate>
           <div class="field">
             <label for="name">Name</label>
             <input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-error">
@@ -243,7 +261,7 @@
             <textarea id="message" name="message" rows="5" required aria-describedby="message-error"></textarea>
             <p class="error" id="message-error" hidden></p>
           </div>
-          <button class="btn btn-primary" type="submit">Prepare Message</button>
+          <button class="btn btn-primary" type="submit">Send Message</button>
           <p class="form-status" id="form-status" role="status" tabindex="-1" hidden></p>
         </form>
       </div>

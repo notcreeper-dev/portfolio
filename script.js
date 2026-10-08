@@ -91,30 +91,53 @@
     });
   });
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    status.hidden = true;
-    const results = Object.keys(rules).map(validateField);
-    if (results.includes(false)) {
-      form.querySelector('[aria-invalid="true"]').focus();
-      return;
+  form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  status.hidden = true;
+
+  const results = Object.keys(rules).map(validateField);
+
+  if (results.includes(false)) {
+    form.querySelector('[aria-invalid="true"]').focus();
+    return;
+  }
+
+  const submitButton = form.querySelector('button[type="submit"]');
+
+  submitButton.disabled = true;
+  submitButton.textContent = 'Sending...';
+
+  try {
+    const response = await fetch('https://formspree.io/f/mbgdoyjb', {
+      method: 'POST',
+      body: new FormData(form),
+      headers: {
+        Accept: 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error('Form submission failed.');
     }
 
-    const subject = encodeURIComponent(
-      `Portfolio Inquiry from ${form.elements.name.value.trim()}`
-    );
+    form.reset();
 
-    const body = encodeURIComponent(
-      `Name: ${form.elements.name.value.trim()}\n` +
-      `Email: ${form.elements.email.value.trim()}\n` +
-      `Business / Project: ${form.elements.business.value.trim()}\n` +
-      `What I need: ${form.elements.need.value}\n\n` +
-      `Message:\n${form.elements.message.value.trim()}`
-    );
+    status.textContent = '✓ Message sent successfully! I’ll get back to you soon.';
+    status.hidden = false;
+    status.focus();
 
-    window.location.href =
-      `mailto:nc.thehacker3@gmail.com?subject=${subject}&body=${body}`;
-  });
+  } catch (error) {
+    status.textContent =
+      '✕ Something went wrong. Please try again later.';
+    status.hidden = false;
+    status.focus();
+
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = 'Send Message';
+  }
+});
 
   // ----- Footer year -----
   document.getElementById('year').textContent = new Date().getFullYear();
